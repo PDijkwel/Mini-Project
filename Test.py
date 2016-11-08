@@ -22,3 +22,4 @@ for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
     except KeyError:
         print('Om '+vertrektijd+' vertrekt een trein naar '+ eindbestemming)
 
+
