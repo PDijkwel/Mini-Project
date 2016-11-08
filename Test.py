@@ -18,9 +18,10 @@ def vertrektijdenUtrecht():
         try:
             vertraging = vertrek['VertrekVertragingTekst']
             if vertraging is not None:
-                print('Om '+vertrektijd+' vertrekt een trein naar '+ eindbestemming + ' vanaf spoor ' + vertrekspoor +' met een vertraging van ' + vertraging)
+                print('Om {} vertrekt een trein naar {:22} vanaf spoor {}\n                                              '
+                          '          met een vertraging van {}\n'.format(vertrektijd, eindbestemming, vertrekspoor, vertraging))
         except KeyError:
-            print('Om '+vertrektijd+' vertrekt een trein naar ' + eindbestemming + ' vanaf spoor ' + vertrekspoor)
+            print('Om {} vertrekt een trein naar {:22} vanaf spoor {}\n'.format(vertrektijd, eindbestemming, vertrekspoor))
 
 def vertrektijdenOpvragen():
     import requests
@@ -49,5 +50,3 @@ def vertrektijdenOpvragen():
                           '          met een vertraging van {}\n'.format(vertrektijd, eindbestemming, vertrekspoor, vertraging))
             except KeyError:
                 print('Om {} vertrekt een trein naar {:22} vanaf spoor {}\n'.format(vertrektijd, eindbestemming, vertrekspoor))
-
-vertrektijdenOpvragen()
