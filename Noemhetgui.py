@@ -18,10 +18,10 @@ def toonVenster4():
         subwindow.withdraw()
 
     subwindow = Toplevel(master=root)
-    labelVertrektijden = Label(master=subwindow, text=vertrektijdenUtrecht(), justify=LEFT)
+    labelVertrektijden = Label(master=subwindow, text=vertrektijdenUtrecht(), justify=LEFT, width='150')
     button6 = Button(master=subwindow, text='Andere station', command=toonVenster5)
     button6.pack(side=RIGHT)
-    labelVertrektijden.pack(padx=10, pady=10)
+    labelVertrektijden.pack(padx=100, pady=100)
 
 
 def toonVenster5():
@@ -34,7 +34,7 @@ def toonVenster5():
         text1.insert(1.0, data)
 
     subwindow = Toplevel(master=root)
-    labelVertrektijden = Label(master=subwindow, text='Voer uw station in',)
+    labelVertrektijden = Label(master=subwindow, text='Voer uw station in')
 
     entry = Entry(master=subwindow, textvariable=invoer)
 
