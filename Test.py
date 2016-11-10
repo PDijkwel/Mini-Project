@@ -15,9 +15,10 @@ def stationsnamen(stat):
         stationNaamLang = station['Namen']['Lang']
         codeNaam = station['Code']
 
-        if stat in codeNaam:
-            langeNaam = station['Namen']['Lang']
+        if stat == codeNaam:
             lijstCodeNamen.append(codeNaam)
+            langeNaam += stationNaamLang
+
         elif stat in stationNaamKort:
             lijstStations.append(stationNaamKort)
         elif stat in stationNaamMiddel:
@@ -43,7 +44,7 @@ def vertrektijdenUtrecht():
 
     vertrekXML = xmltodict.parse(response.text)
     Tijden = ""
-    Tijden += ('Dit zijn de vertrekkende treinen\n')
+    Tijden += ('Dit zijn de vertrekkende treinen van station: Utrecht Centraal\n'+ '\n')
     for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
         eindbestemming=vertrek['EindBestemming']
         vertrektijd = vertrek['VertrekTijd']
@@ -53,9 +54,9 @@ def vertrektijdenUtrecht():
         try:
             vertraging = vertrek['VertrekVertragingTekst']
             if vertraging is not None:
-                Tijden += ('Om {} vertrekt een trein naar {:10} vanaf spoor {}\n met een vertraging van {}\n'.format(vertrektijd, eindbestemming, vertrekspoor, vertraging))
+                Tijden += ('Om {} vertrekt een trein naar {:40} vanaf spoor {:20} met een vertraging van {}\n'.format(vertrektijd, eindbestemming, vertrekspoor, vertraging))
         except KeyError:
-            Tijden += ('Om {} vertrekt een trein naar {:10} vanaf spoor {}\n'.format(vertrektijd, eindbestemming, vertrekspoor))
+            Tijden += ('Om {} vertrekt een trein naar {:40} vanaf spoor {}\n'.format(vertrektijd, eindbestemming, vertrekspoor))
     return Tijden
 
 def vertrektijdenOpvragen(invoer):
@@ -84,4 +85,3 @@ def vertrektijdenOpvragen(invoer):
         except KeyError:
             Tijden += ('Om {} vertrekt een trein naar {:22} vanaf spoor {}\n'.format(vertrektijd, eindbestemming, vertrekspoor))
     return Tijden
-
