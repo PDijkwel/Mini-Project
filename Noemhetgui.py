@@ -30,7 +30,7 @@ def toonVenster5():
     def opvragentijden():
         text1.delete(1.0, END)
         verzoek = entry.get()
-        data = vertrektijdenOpvragen(verzoek)
+        data = stationsnamen(verzoek)
         text1.insert(1.0, data)
 
     subwindow = Toplevel(master=root)
